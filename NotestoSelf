@@ -1,0 +1,13 @@
+Build the docker container
+docker build -t databaseimage:3 .
+
+Run the docker container
+docker run -it databaseimage:3 
+
+Access the db
+sqlite3 mydatabase.db
+
+Now can do select statements such as "SELECT * FROM Card;"
+
+to exit sqlite ".exit" 
+to exit container "exit"

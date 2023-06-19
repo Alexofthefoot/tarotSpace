@@ -1,9 +1,194 @@
-CREATE TABLE contacts (
-	contact_id INTEGER PRIMARY KEY,
-	first_name TEXT NOT NULL,
-	last_name TEXT NOT NULL,
-	email TEXT NOT NULL UNIQUE,
-	phone TEXT NOT NULL UNIQUE
+CREATE TABLE Card (
+	card_id INTEGER NOT NULL UNIQUE,
+	card_name TEXT NOT NULL UNIQUE,
+	arcana TEXT NOT NULL,
+	suit TEXT, 
+	orientation TEXT NOT NULL
+	-- link_image
 );
 
-INSERT INTO contacts values (1,"name", "lname", "email", "phone");
+CREATE TABLE Topic (
+	topic_id INTEGER PRIMARY KEY,
+	topic_name TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE Spread (
+	spread_id INTEGER PRIMARY KEY,
+	spread_name TEXT Not NULL,
+	num_cards INTEGER NOT NULL
+	-- spread_source 
+);
+
+CREATE TABLE Reading (
+	reading_id INTEGER PRIMARY KEY,
+	spread_id INTEGER NOT NULL,
+	topic1 INTEGER,
+	topic2 INTEGER,
+	FOREIGN KEY (spread_id) REFERENCES Spread(spread_id),
+	FOREIGN KEY (topic1) REFERENCES Topic(topic_id),
+	FOREIGN KEY (topic2) REFERENCES Topic(topic_id)
+);
+
+-- Insert all Upright minor arcana cards (0-55)
+INSERT INTO Card values (0,"Ace of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (1,"Two of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (2,"Three of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (3,"Four of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (4,"Five of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (5,"Six of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (6,"Seven of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (7,"Eight of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (8,"Nine of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (9,"Ten of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (10,"Page of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (11,"Knight of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (12,"Queen of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (13,"King of Swords","Minor","Swords", "Upright");
+INSERT INTO Card values (14,"Ace of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (15,"Two of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (16,"Three of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (17,"Four of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (18,"Five of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (19,"Six of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (20,"Seven of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (21,"Eight of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (22,"Nine of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (23,"Ten of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (24,"Page of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (25,"Knight of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (26,"Queen of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (27,"King of Wands","Minor","Wands", "Upright");
+INSERT INTO Card values (28,"Ace of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (29,"Two of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (30,"Three of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (31,"Four of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (32,"Five of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (33,"Six of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (34,"Seven of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (35,"Eight of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (36,"Nine of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (37,"Ten of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (38,"Page of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (39,"Knight of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (40,"Queen of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (41,"King of Pentacles","Minor","Pentacles", "Upright");
+INSERT INTO Card values (42,"Ace of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (43,"Two of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (44,"Three of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (45,"Four of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (46,"Five of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (47,"Six of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (48,"Seven of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (49,"Eight of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (50,"Nine of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (51,"Ten of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (52,"Page of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (53,"Knight of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (54,"Queen of Cups","Minor","Cups", "Upright");
+INSERT INTO Card values (55,"King of Cups","Minor","Cups", "Upright");
+
+-- Insert all Major arcana cards upright (56-77)
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (56, "The Fool", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (57, "The Magician", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (58, "The High Priestess", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (59, "The Empress", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (60, "The Emperor", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (61, "The Heirophant", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (62, "The Lovers", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (63, "The Chariot", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (64, "Strength", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (65, "The Hermit", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (66, "Wheel of Fortune", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (67, "Justice", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (68, "The Hanged Man", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (69, "Death", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (70, "Temperance", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (71, "The Devil", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (72, "The Tower", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (73, "The Star", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (74, "The Moon", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (75, "The Sun", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (76, "Judgement", "Major", "Upright");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (77, "The World", "Major", "Upright");
+
+-- -- Insert minor arcana reversed (78-133)
+-- INSERT INTO Card values (78, "Ace of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (79, "Two of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (80, "Three of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (81, "Four of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (82, "Five of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (83, "Six of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (84, "Seven of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (85, "Eight of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (86, "Nine of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (87, "Ten of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (88, "Page of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (89, "Knight of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (90, "Queen of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (91, "King of Swords Reversed", "Minor", "Swords", "Reversed");
+-- INSERT INTO Card values (92, "Ace of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (93, "Two of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (94, "Three of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (95, "Four of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (96, "Five of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (97, "Six of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (98, "Seven of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (99, "Eight of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (100, "Nine of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (101, "Ten of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (102, "Page of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (103, "Knight of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (104, "Queen of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (105, "King of Wands Reversed", "Minor", "Wands", "Reversed");
+-- INSERT INTO Card values (106, "Ace of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (107, "Two of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (108, "Three of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (109, "Four of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (110, "Five of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (111, "Six of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (112, "Seven of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (113, "Eight of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (114, "Nine of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (115, "Ten of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (116, "Page of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (117, "Knight of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (118, "Queen of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (119, "King of Pentacles Reversed", "Minor", "Pentacles", "Reversed");
+-- INSERT INTO Card values (120, "Ace of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (121, "Two of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (122, "Three of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (123, "Four of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (124, "Five of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (125, "Six of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (126, "Seven of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (127, "Eight of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (128, "Nine of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (129, "Ten of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (130, "Page of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (131, "Knight of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (132, "Queen of Cups Reversed", "Minor", "Cups", "Reversed");
+-- INSERT INTO Card values (133, "King of Cups Reversed", "Minor", "Cups", "Reversed");
+
+-- -- Insert major arcana reversed (134-155)
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (134, "The Fool Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (135, "The Magician Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (136, "The High Priestess Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (137, "The Empress Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (138, "The Emperor Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (139, "The Heirophant Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (140, "The Lovers Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (141, "The Chariot Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (142, "Strength Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (143, "The Hermit Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (144, "Wheel of Fortune Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (145, "Justice Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (146, "The Hanged Man Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (147, "Death Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (148, "Temperance Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (149, "The Devil Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (150, "The Tower Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (151, "The Star Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (152, "The Moon Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (153, "The Sun Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (154, "Judgement Reversed", "Major", "Reversed");
+-- INSERT INTO Card (card_id, card_name, arcana, orientation) values (155, "The World Reversed", "Major", "Reversed");
